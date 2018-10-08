@@ -1,0 +1,86 @@
+<!--<ul [sortablejs]="modules"-->
+    <!--[sortablejsOptions]="{ animation: 300 }"-->
+    <!--class="list-group jga-sortable-vertical">-->
+
+
+
+
+
+
+
+
+  <!--<li (click)="selectModule(module)"-->
+      <!--[ngClass]="{'active': module.selected}"-->
+      <!--*ngFor="let module of modules"-->
+      <!--class="list-group-item" [routerLink]="['/module', module.id, 'chapter', 1, 'topic', 1]">-->
+    <!--<textarea [hidden]="!module.selected"-->
+              <!--rows="1"-->
+           <!--[(ngModel)]="module.label"-->
+              <!--class="jga-padding-0px jga-border-none jga-background-transparent"></textarea>-->
+    <!--<i [hidden]="!module.selected"-->
+       <!--(click)="deleteModule(module)"-->
+       <!--class="float-right jga-font-size-1-point-5em fa fa-times"></i>-->
+    <!--<span [hidden]="module.selected">{{module.moduleName}}</span>-->
+  <!--</li>-->
+  <!--<li (click)="addModule()" class="list-group-item jga-text-align-center jga-border-left-right-none jga-border-bottom-none">-->
+    <!--<i class="btn btn-block btn-primary">Add Module</i>-->
+  <!--</li>-->
+<!--</ul>-->
+
+
+
+
+<br/>
+<nav id="website-top-navbar" class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
+
+    <div class="col-sm-12">
+
+      <div class="navbar-text pull-left" style="margin-left: 0px;">
+        <a [routerLink]="['/user', 'course']">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand">
+          <b>Modules</b>
+        </a>
+      </div>
+
+      <div *ngIf="hide" class="navbar-text pull-right">
+        <a [routerLink]="['/user', 'course', courseId, 'module', 'new']">
+          <span class="glyphicon glyphicon-plus"></span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+  <div  class="list-group" *ngFor="let module of modules">
+       
+    <div class="list-group-item clearfix">
+          <a class="pull-left" [routerLink]="['/user', 'course', courseId, 'module', module.id, 'chapter']">{{module.moduleName}}</a>
+           <a *ngIf="hide" class="pull-right" [routerLink]="['/user','course', courseId, 'module', module.id]">
+             <span class="glyphicon glyphicon-cog"></span>
+           </a>
+    </div>
+  </div>
+
+
+</div>
+
+<nav id="footer" class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-right">
+      <a [routerLink]="['/profile']">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+
+  </div>
+</nav>
+

@@ -1,0 +1,57 @@
+<nav class="globalNavPageNavArea">
+</nav>
+
+<div class="container-fluid hf-body">
+  <h1> Register </h1>
+  <hr>
+  <form #f="ngForm" novalidate>
+    <input type="text"
+           placeholder="username"
+           name="username"
+           class="form-control hf-input"
+           ngModel
+           required
+           #username="ngModel">
+
+    <input type="password"
+           placeholder="password"
+           name="password"
+           class="form-control hf-input"
+           ngModel
+           required
+           #password="ngModel">
+
+    <input type="password"
+           placeholder="Verify password"
+           name="vPassword"
+           class="form-control hf-input"
+           ngModel
+           required
+           #vPassword="ngModel">
+
+
+    <div class="form-group text-center">
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" value="Faculty" name="userRole"
+                 [(ngModel)]="userRole"/>Faculty</label>
+
+        <label class="radio-inline">
+          <input type="radio" value="Student" name="userRole"
+                 [(ngModel)]="userRole"/>Student</label>
+      </div>
+    </div>
+
+    <!--<button class="btn btn-primary" (click)="checkRole">-->
+      <!--CHECK-->
+    <!--</button>-->
+
+    <button
+      class="btn btn-primary btn-block"
+      type = "submit"
+      [disabled] = "!f.valid"
+      (click)="onSubmit(f)"> Submit </button>
+  </form>
+</div>
+
+

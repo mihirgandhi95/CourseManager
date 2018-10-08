@@ -1,0 +1,114 @@
+<!--Top Nav-->
+<nav id="top-navbar" class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
+
+    <div class="col-sm-4 hidden-xs">
+      <div class="navbar-text pull-left" style="margin-left: 0px;">
+        <a [routerLink]="['/user', 'course']">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand">
+          <b>Your Courses</b>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="col-sm-8">
+      <div class="navbar-text pull-left hidden-sm hidden-md hidden-lg">
+        <a [routerLink]="['/user', 'website']">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+
+      <div class="navbar-text pull-right">
+        <a (click)="create($event)">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+      </div>
+
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand">
+          <b>New Course</b>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<div class="row container-fluid">
+
+  <div class="col-sm-4 hidden-xs">
+
+    <ul class="list-group" *ngFor="let course of courses">
+      <li class="list-group-item">
+        <a [routerLink]="['/user', 'course', course.id, 'chapter']">{{course.courseName}}</a>
+        <a *ngIf="hide" [routerLink]="['/user', 'website', course.id]">
+          <span class="glyphicon glyphicon-cog pull-right"></span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+  <div *ngIf="!hide" class="col-sm-8">
+    <ul class="list-group clearfix" *ngFor="let course of allCourses">
+      <li class="list-group-item clearfix">
+        <a [routerLink]="['/user', 'course', course.id, 'chapter']">{{course.courseName}}</a>
+        <a (click)="enroll(course.id)">
+          <button class="btn btn-primary pull-right">Enroll</button>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+  <div *ngIf="hide" class="col-sm-8">
+    <form>
+      <div class="form-group">
+        <label for="course-name">Name</label>
+        <input id="course-name"
+               type="text"
+               class="form-control"
+               placeholder="Course Name"
+               name="courseName"
+               [(ngModel)]="courseName"/>
+
+      </div>
+    </form>
+    <div *ngIf=errorFlag
+         class="alert alert-danger">
+      {{error}}
+    </div>
+
+    <form>
+      <div class="form-group">
+        <label for="course-description">Description</label>
+        <textarea class="form-control"
+                  rows="5"
+                  id="course-description"
+                  placeholder="Course Description"
+                  name="courseDescription"
+                  [(ngModel)]="courseDescription"></textarea>
+      </div>
+    </form>
+
+
+  </div>
+</div>
+
+
+<!-- Footer -->
+<nav id="footer" class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-right">
+      <a [routerLink]="['/profile']">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+  </div>
+</nav>

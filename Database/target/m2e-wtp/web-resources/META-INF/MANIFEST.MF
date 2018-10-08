@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: cs5200-course-manager
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: mateo
+Implementation-Vendor-Id: com.jga
+Build-Jdk: 1.8.0_121
+Implementation-URL: http://projects.spring.io/spring-boot/cs5200-cours
+ e-manager/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

@@ -1,0 +1,29 @@
+<nav class="globalNavPageNavArea"></nav>
+
+<div class="container-fluid hf-body">
+  <!-- content under nav bar -->
+  <!--<div class="row">-->
+    <!--<div class="col-sm-3 hidden-xs">-->
+      <!--<app-module-list></app-module-list>-->
+    <!--</div>-->
+
+    <!--<div class="col-sm-9">-->
+      <!--<app-section-list-editor></app-section-list-editor>-->
+      <!--<app-widget-youtube></app-widget-youtube>-->
+      <!--</div>-->
+    <!--</div>-->
+  <div [ngSwitch]="widgetType">
+    <div *ngSwitchCase="'YouTube'">
+      <app-widget-youtube></app-widget-youtube>
+    </div>
+
+    <div *ngSwitchCase="'Slide'">
+      <app-widget-slide></app-widget-slide>
+    </div>
+
+    <div *ngSwitchCase="'Text'">
+      <app-widget-text></app-widget-text>
+    </div>
+
+  </div>
+</div>

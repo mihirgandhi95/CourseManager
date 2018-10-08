@@ -1,0 +1,98 @@
+<!--<div class="row">-->
+
+
+
+<!--<ul [sortablejs]="chapters" [sortablejsOptions]="{ animation: 150 }" class="nav nav-tabs jga-sortable-horizontal -pull-left">-->
+  <!--<li *ngFor="let chapter of chapters; let i = index"-->
+      <!--ngInit="chapter.selected = false"-->
+
+      <!--(click)="selectChapter(chapter)"-->
+      <!--role="presentation"-->
+      <!--class="nav-item -pull-left clearfix"-->
+      <!--[ngClass]="{'active': chapter.selected}">-->
+    <!--<a *ngIf="i + 1  < chapters.length" class="nav-link" [hidden]="!chapter.selected">-->
+
+        <!--<a class="-pull-left" style="margin-right: 20px">{{chapter.label}}</a>-->
+        <!--<a class="glyphicon glyphicon-cog -pull-right" (click)="console.log('hello')"></a>-->
+      <!--&lt;!&ndash;<input class="jga-padding-0px jga-background-transparent jga-border-none" [(ngModel)]="chapter.label"/><i class="fa fa-times"></i>&ndash;&gt;-->
+    <!--</a>-->
+
+    <!--<a *ngIf="i + 1 == chapters.length" class="nav-link" [hidden]="!chapter.selected">-->
+
+      <!--<a class="-pull-left" style="margin-right: 20px">{{chapter.label}}</a>-->
+      <!--<a class="glyphicon glyphicon-cog -pull-right" (click)="console.log('hello')"></a>-->
+      <!--<a class="nav-link glyphicon glyphicon-plus" style="padding-left: 20px" (click)="console.log('hello')"></a>-->
+      <!--&lt;!&ndash;<input class="jga-padding-0px jga-background-transparent jga-border-none" [(ngModel)]="chapter.label"/><i class="fa fa-times"></i>&ndash;&gt;-->
+    <!--</a>-->
+
+
+    <!--&lt;!&ndash;<a class="jga nav-link"&ndash;&gt;-->
+    <!--&lt;!&ndash;[hidden]="section.selected">&ndash;&gt;-->
+    <!--&lt;!&ndash;{{section.label}}&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+  <!--</li>-->
+
+<!--</ul>-->
+
+
+<!--</div>-->
+
+
+
+<br/>
+<nav id="website-top-navbar" class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
+
+    <div class="col-sm-12">
+
+      <div class="navbar-text pull-left" style="margin-left: 0px;">
+        <a [routerLink]="['/user/course', courseId, 'module']">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand">
+          <b>Chapters</b>
+        </a>
+      </div>
+
+      <div *ngIf="hide" class="navbar-text pull-right">
+        <a [routerLink]="['/user', 'course', courseId, 'module', moduleId, 'chapter', 'new']">
+          <span class="glyphicon glyphicon-plus"></span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+  <div  class="list-group" *ngFor="let chapter of chapters">
+       
+    <div class="list-group-item clearfix">
+          <a class="pull-left"
+             [routerLink]="['/user', 'course', courseId, 'module', moduleId,
+      'chapter', chapter.id, 'topic']">{{chapter.chapterName}}</a>
+
+           <a *ngIf="hide" class="pull-right" [routerLink]="['/user','course', courseId, 'module', moduleId, 'chapter', chapter.id]">
+             <span class="glyphicon glyphicon-cog"></span>
+           </a>
+    </div>
+  </div>
+
+
+</div>
+
+<nav id="footer" class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-right">
+      <a [routerLink]="['/profile']">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+
+  </div>
+</nav>
+

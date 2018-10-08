@@ -1,0 +1,93 @@
+<nav id="website-top-navbar" class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
+
+    <div class="col-sm-12">
+
+      <div class="navbar-text pull-left" style="margin-left: 0px;">
+        <a [routerLink]="['/user/course', courseId, 'module', moduleId, 'chapter', chapterId, 'topic']">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand">
+          <b>Widgets</b>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+<br/>
+
+<div *ngIf="hide" class="hf-button btn-group professor-only">
+<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+  Add <span class="caret"></span>
+</button>
+<ul class="dropdown-menu">
+  <li><a (click)="goToWidget('Slide')">New Slide</a></li>
+  <li role="separator" class="divider"></li>
+  <li><a (click)="goToWidget('YouTube')">New Video</a></li>
+  <li role="separator" class="divider"></li>
+  <li><a (click)="goToWidget('Text')">New Text</a></li>
+</ul>
+</div>
+
+<div class="container-fluid">
+<div class="hf-body" *ngFor="let widget of widgets">
+  <div [ngSwitch]="widget.dtype">
+
+    <div *ngSwitchCase="'Slide'">
+      <div class="hf-widget">
+        <div *ngIf="hide" class="hf-toolbar professor-only">
+          <a (click)="Edit(widget.id)"
+             class="navbar-link">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+        <iframe [src]="widget.url | safe"
+                frameborder="0"
+                width="960"
+                height="569"
+                allowfullscreen="true"
+                mozallowfullscreen="true"
+                webkitallowfullscreen="true">
+        </iframe>
+      </div>
+    </div>
+
+
+    <div *ngSwitchCase="'YouTube'" class="youtube-widget">
+      <div class="hf-widget">
+        <div *ngIf="hide" class="hf-overlay professor-only">
+          <a (click)="Edit(widget.id)"
+             class="navbar-link">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+        <div  class="hf-video-container">
+          <iframe [src]="widget.url | safe" frameborder="0"
+                  allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'Text'">
+      <div class="hf-widget">
+        <div *ngIf="hide" class="hf-toolbar professor-only">
+          <a (click)="Edit(widget.id)"
+             class="navbar-link">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+        <div [innerHTML]="widget.text">
+          [innerHTML]="widget.text"
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+</div>

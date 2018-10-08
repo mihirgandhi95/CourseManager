@@ -1,0 +1,48 @@
+<nav class="globalNavPageNavArea">
+  <div class="container-fluid">
+    <div class="navbar-text pull-left">
+      <a>
+        <span class="glyphicon glyphicon-circle-arrow-left" style = "font-size:25px;"></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid hf-body">
+  <div *ngIf=flag
+       class="alert alert-danger">
+    {{error}}
+  </div>
+  <form novalidate name="model.myform">
+    <div class="form-group">
+      <label for="Name">Create Text</label>
+      <hr>
+      <input [(ngModel)]="widgetName"
+             type="text"
+             class="form-control"
+             id="Name"
+             name="widname"
+             placeholder="Name"
+             required>
+      <!--<span class="alert-class"-->
+      <!--*ngIf="flag">{{alert}}</span>-->
+    </div>
+    <quill-editor [(ngModel)]="text" name="text"></quill-editor>
+  </form>
+
+  <div class="hf-btn">
+    <br/>
+    <a class = "btn btn-primary btn-block"
+       (click)="save()">
+      Save
+    </a>
+    <a class = "btn btn-danger btn-block"
+       (click)="delete()">
+      Delete
+    </a>
+  </div>
+
+</div>
+
+<!-- Footer -->
+

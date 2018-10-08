@@ -1,0 +1,110 @@
+<!--Top Nav-->
+<nav id="top-navbar" class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
+
+    <div class="col-sm-4 hidden-xs">
+      <div class="navbar-text pull-left" style="margin-left: 0px;">
+        <a [routerLink]="['/user', 'course', courseId, 'module']">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand">
+          <b>Modules</b>
+        </a>
+      </div>
+
+      <div class="navbar-text pull-right">
+        <a [routerLink]="['/user', 'website', 'new']">
+          <span class="glyphicon glyphicon-plus"></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="navbar-text pull-left hidden-sm hidden-md hidden-lg">
+        <a [routerLink]="['/user', 'website']">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+
+      <div class="navbar-text pull-right">
+        <a (click)="create($event)">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+      </div>
+
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand">
+          <b>New Module</b>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<div class="row container-fluid">
+
+  <div class="col-sm-4 hidden-xs">
+
+    <div  class="list-group" *ngFor="let module of modules">
+         
+      <div class="list-group-item clearfix">
+            <a class="pull-left" [routerLink]="['/user', 'course', courseId, 'module', module.id, 'chapter']">{{module.moduleName}}</a>
+             <a class="pull-right" [routerLink]="['/user','course', courseId]">
+               <span class="glyphicon glyphicon-cog"></span>
+             </a>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="col-sm-8">
+    <form>
+      <div class="form-group">
+        <label for="module-name">Name</label>
+        <input id="module-name"
+               type="text"
+               class="form-control"
+               placeholder="Module Name"
+               name="moduleName"
+               [(ngModel)]="moduleName"/>
+
+      </div>
+    </form>
+    <div *ngIf=errorFlag
+         class="alert alert-danger">
+      {{error}}
+    </div>
+
+    <form>
+      <div class="form-group">
+        <label for="module-description">Description</label>
+        <textarea class="form-control"
+                  rows="5"
+                  id="module-description"
+                  placeholder="Module Description"
+                  name="moduleDescription"
+                  [(ngModel)]="moduleDescription"></textarea>
+      </div>
+    </form>
+
+
+  </div>
+</div>
+
+
+<!-- Footer -->
+<nav id="footer" class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-right">
+      <a [routerLink]="['/profile']">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+  </div>
+</nav>

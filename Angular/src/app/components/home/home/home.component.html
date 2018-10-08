@@ -1,0 +1,59 @@
+<!--<div class="container-fluid hf-body">-->
+  <!--&lt;!&ndash; content under nav bar &ndash;&gt;-->
+  <!--<div class="row">-->
+    <!--<div class="col-sm-3 hidden-xs">-->
+      <!--<app-module-list></app-module-list>-->
+    <!--</div>-->
+
+    <!--<div class="col-sm-9">-->
+      <!--<div>-->
+        <!--<app-section-list-editor></app-section-list-editor>-->
+      <!--</div>-->
+      <!--<div id="widget-view">-->
+        <!--<app-widget-youtube></app-widget-youtube>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+
+<br/>
+<nav id="website-top-navbar" class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
+
+    <div class="col-sm-12">
+
+
+
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand">
+          <b>Course Manager</b>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+  <button class="btn btn-success" [routerLink]="['/login']">Login</button>
+
+  <div  class="list-group" *ngFor="let course of courses">
+       
+    <div class="list-group-item clearfix">
+          <a class="pull-left" [routerLink]="['/user', 'course', course.id, 'module']">{{course.courseName}}</a>
+         
+    </div>
+  </div>
+
+   
+
+
+</div>
+
+<nav id="footer" class="navbar navbar-default navbar-fixed-bottom">
+
+</nav>
+

@@ -1,0 +1,51 @@
+<nav class="globalNavPageNavArea"></nav>
+
+<div class="container-fluid hf-body">
+  <h1> Search YouTube Channels </h1>
+  <p *ngIf="searching"></p>
+  <form>
+    <div class="form-group">
+      <input [(ngModel)]="name"
+             type="text"
+             class="form-control"
+             name="search"
+             id="search"
+             placeholder="Search Channel">
+    </div>
+  </form>
+  <button
+    class="searchButton"
+    type = "submit"
+    (click)="searchYouTube(name)">
+    Search YouTube Channel
+  </button>
+  <br/>
+  <div *ngFor="let video of youtubes" class="col-sm-6">
+    <br/>
+    <ul class="list-group">
+      <li class = "list-group-item">
+        <p> {{video.snippet.title}} </p>
+        <div>
+          <iframe class="video-container"
+                  [src] = "getUrl(video.snippet.resourceId.videoId) | safe"
+                  frameborder="0"
+                  allowfullscreen></iframe>
+          <button
+            [style.background-color]="video.disabled ? 'blue': '#CA1740'"
+            class="searchButton"
+            type = "submit"
+            [disabled]="video.disabled"
+            (click)="selectVideo(video)">
+            Save Video
+          </button>
+          <!--<a (click)="selectVideo(video)"-->
+             <!--class="navbar-link">-->
+            <!--<span class="glyphicon glyphicon-cog"></span>-->
+          <!--</a>-->
+        </div>
+      </li>
+    </ul>
+    <br>
+  </div>
+</div>
+

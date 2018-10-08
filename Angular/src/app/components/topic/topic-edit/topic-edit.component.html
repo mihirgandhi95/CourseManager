@@ -1,0 +1,148 @@
+<!--<br />-->
+<!--<div class="container-fluid">-->
+<!--<div class="row">-->
+<!--<div class="col-md-3">-->
+<!--<app-module-list></app-module-list>-->
+<!--</div>-->
+<!--<div class="col-md-9">-->
+<!--<app-section-list-editor></app-section-list-editor>-->
+<!--<br/>-->
+<!--<app-subsection-list-editor></app-subsection-list-editor>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<!-- Top Nav -->
+<!--<br />-->
+<!--<div class="container-fluid">-->
+<!--<div class="row">-->
+<!--<div class="col-md-3">-->
+<!--<app-module-list></app-module-list>-->
+<!--</div>-->
+<!--<div class="col-md-9">-->
+<!--<app-section-list-editor></app-section-list-editor>-->
+<!--<br/>-->
+<!--<app-subsection-list-editor></app-subsection-list-editor>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<!-- Top Nav -->
+<nav id="website-top-navbar" class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
+
+    <div class="col-sm-4 hidden-xs">
+      <div class="navbar-text pull-left" style="margin-left: 0px;">
+        <a [routerLink]="['/user', 'course']">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand">
+          <b>Topics</b>
+        </a>
+      </div>
+
+
+
+    </div>
+
+    <div class="col-sm-8">
+      <div class="navbar-text pull-left hidden-sm hidden-md hidden-lg" >
+        <a [routerLink]="['/user', 'website']">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+
+      <div class="navbar-text pull-right" >
+        <a (click)="edit($event)">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+      </div>
+
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand">
+          <b>Edit Topic</b>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<div class="row container-fluid">
+
+  <!-- Website List-->
+  <div class="col-sm-4 hidden-xs">
+
+    <div  class="list-group" *ngFor="let topic of topics">
+         
+      <div class="list-group-item clearfix">
+            <a class="pull-left"
+               [routerLink]="['/user', 'course', courseId, 'module', moduleId,
+      'chapter', chapterId, 'topic', topic.id, 'widget']">{{topic.name}}</a>
+             <a *ngIf="hide" class="pull-right" [routerLink]="['/user','course', courseId, 'module',
+      moduleId, 'chapter', chapterId, 'topic', topicId]">
+               <span class="glyphicon glyphicon-cog"></span>
+             </a>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="col-sm-8">
+    <form>
+      <div class="form-group">
+        <label for="topic-name">Name</label>
+        <input type="text"
+               class="form-control"
+               id="topic-name"
+               placeholder="Topic Name"
+               name="topicName"
+               [(ngModel)]="topicName"/>
+      </div>
+    </form>
+    <div *ngIf=errorFlag
+         class="alert alert-danger">
+      {{error}}
+    </div>
+
+    <form>
+      <div class="form-group">
+        <label for="topic-description">Description</label>
+        <textarea id="topic-description"
+                  class="form-control"
+                  rows="5"
+                  placeholder="Topic Description"
+                  name="topicName"
+                  [(ngModel)]="topicDescription"></textarea>
+      </div>
+    </form>
+
+    <button class="btn btn-block btn-danger"
+            type="submit"
+            (click)="delete($event)">Delete</button>
+
+
+  </div>
+</div>
+
+<!-- Footer -->
+<nav id="footer" class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-right">
+      <a [routerLink]="['/profile']">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+
+
+

@@ -1,0 +1,72 @@
+<nav class="globalNavPageNavArea"></nav>
+
+<div class="container-fluid hf-body">
+  <div *ngIf=flag
+       class="alert alert-danger">
+    {{error}}
+  </div>
+  <label for="Name">Name</label>
+  <div>
+    <input [(ngModel)]="widgetName"
+           type="text"
+           class="form-control"
+           id="Name"
+           name="name"
+           placeholder="Name">
+  </div>
+  <label for="widget-url">URL</label>
+  <input [(ngModel)]="url"
+         name="url"
+         id="widget-url"
+         type="url"
+         class="form-control"
+         placeholder="url"/>
+
+</div>
+
+<div class="hf-btn">
+  <a class = "btn btn-primary btn-block"
+     (click)="UpdateUrl($event)">
+    Save
+  </a>
+  <a class = "btn btn-danger btn-block"
+     (click)="Delete($event)">
+    Delete
+  </a>
+</div>
+
+<button *ngIf='!isLoggedIn()' (click)="signIn()">Sign In To Google Slide</button>
+
+<div *ngIf='isLoggedIn()'>
+  <p *ngIf='!sheet'>
+    <button  (click)=create()>Create empty sheet</button>
+  </p>
+
+  <p *ngIf='sheet'>
+    <span>sheetId {{sheet.spreadsheetId}}</span>
+  </p>
+
+  <p>
+    <label>Spreadsheet id</label>
+    <input type="text" [(ngModel)]=sheetId />
+    <button (click)="findSheet()">fetch spreadsheet</button>
+  </p>
+
+  <p *ngIf="foundSheet">
+    <code>
+      {{foundSheet | json}}
+    </code>
+  </p>
+
+</div>
+
+
+<div class="container-fluid hf-body">
+  <iframe [src]="widget.url | safe"
+          frameborder="0" width="960" height="569"
+          allowfullscreen="true"
+          mozallowfullscreen="true"
+          webkitallowfullscreen="true"></iframe>
+</div>
+
+

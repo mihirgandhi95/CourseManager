@@ -1,0 +1,58 @@
+<br/>
+<nav id="website-top-navbar" class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
+
+    <div class="col-sm-12">
+
+      <div class="navbar-text pull-left" style="margin-left: 0px;">
+        <a [routerLink]="['/profile']">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand">
+          <b>Courses</b>
+        </a>
+      </div>
+
+      <div class="navbar-text pull-right">
+        <a [routerLink]="['/user', 'course', 'new']">
+          <span class="glyphicon glyphicon-plus"></span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+  <div class="list-group" *ngFor="let course of courses">
+       
+    <div class="list-group-item clearfix">
+      <a class="pull-left" [routerLink]="['/user', 'course', course.id, 'module']">{{course.courseName}}</a>
+      <a *ngIf="hide" class="pull-right" [routerLink]="['/user','course', course.id]">
+        <span class="glyphicon glyphicon-cog"></span>
+      </a>
+
+      <a *ngIf="!hide" class="pull-right">
+        <button class="btn btn-danger" (click)="unenroll(course.id)">Un-Enroll</button>
+      </a>
+
+    </div>
+  </div>
+
+
+</div>
+
+<nav id="footer" class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-right">
+      <a [routerLink]="['/profile']">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+
+  </div>
+</nav>

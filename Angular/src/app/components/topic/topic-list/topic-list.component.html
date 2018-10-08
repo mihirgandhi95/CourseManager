@@ -1,0 +1,96 @@
+<!--<div class="row">-->
+
+
+
+  <!--<ul [sortablejs]="topics" [sortablejsOptions]="{ animation: 150 }" class="nav nav-tabs jga-sortable-horizontal -pull-left">-->
+    <!--<li *ngFor="let topic of topics, let i = index"-->
+        <!--ngInit="chapter.selected = false"-->
+
+        <!--(click)="selectTopic(topic)"-->
+        <!--role="presentation"-->
+        <!--class="nav-item -pull-left clearfix"-->
+        <!--[ngClass]="{'active': topic.selected}">-->
+      <!--<a *ngIf="i + 1 < topics.length" class="nav-link">-->
+
+        <!--<a class="-pull-left" style="margin-right: 20px">{{topic.label}}</a>-->
+        <!--<a class="glyphicon glyphicon-cog -pull-right"></a>-->
+        <!--&lt;!&ndash;<input class="jga-padding-0px jga-background-transparent jga-border-none" [(ngModel)]="chapter.label"/><i class="fa fa-times"></i>&ndash;&gt;-->
+      <!--</a>-->
+
+      <!--<a *ngIf="i + 1 == topics.length" class="nav-link">-->
+
+        <!--<a class="-pull-left" style="margin-right: 20px">{{topic.label}}</a>-->
+        <!--<a class="glyphicon glyphicon-cog -pull-right" (click)="console.log('hello')"></a>-->
+        <!--<a class="nav-link glyphicon glyphicon-plus" style="padding-left: 20px" (click)="change()"></a>-->
+
+        <!--&lt;!&ndash;<input class="jga-padding-0px jga-background-transparent jga-border-none" [(ngModel)]="chapter.label"/><i class="fa fa-times"></i>&ndash;&gt;-->
+      <!--</a>-->
+
+    <!--</li>-->
+
+  <!--</ul>-->
+
+<!--</div>-->
+
+
+
+
+
+<br/>
+<nav id="website-top-navbar" class="navbar navbar-default navbar-fixed-top">
+  <div class="row container-fluid">
+
+    <div class="col-sm-12">
+
+      <div class="navbar-text pull-left" style="margin-left: 0px;">
+        <a [routerLink]="['/user/course', courseId, 'module', moduleId, 'chapter']">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+
+      <div class="navbar-header pull-left">
+        <a class="navbar-brand">
+          <b>Topics</b>
+        </a>
+      </div>
+
+      <div *ngIf="hide" class="navbar-text pull-right">
+        <a [routerLink]="['/user', 'course', courseId, 'module', moduleId, 'chapter', chapterId, 'topic', 'new']">
+          <span class="glyphicon glyphicon-plus"></span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+  <div  class="list-group" *ngFor="let topic of topics">
+       
+    <div class="list-group-item clearfix">
+          <a class="pull-left"
+             [routerLink]="['/user', 'course', courseId, 'module', moduleId,
+      'chapter', chapterId, 'topic', topic.id, 'widget']">{{topic.name}}</a>
+           <a *ngIf="hide" class="pull-right" [routerLink]="['/user','course', courseId, 'module',
+      moduleId, 'chapter', chapterId, 'topic', topic.id]">
+             <span class="glyphicon glyphicon-cog"></span>
+           </a>
+    </div>
+  </div>
+
+
+</div>
+
+<nav id="footer" class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-right">
+      <a [routerLink]="['/profile']">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
